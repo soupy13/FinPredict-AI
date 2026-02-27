@@ -1,0 +1,34 @@
+BEGIN TRANSACTION;
+
+-- Create Contact Support Table
+DROP TABLE IF EXISTS `contactsupport`;
+CREATE TABLE `contactsupport` (
+  `id` INTEGER PRIMARY KEY AUTOINCREMENT,
+  `name` VARCHAR(50) NOT NULL,
+  `email` VARCHAR(20) NOT NULL,
+  `contact` VARCHAR(12) NOT NULL,
+  `message` VARCHAR(230) DEFAULT NULL,
+  `status` TINYINT(1) DEFAULT 0
+);
+
+-- Create Loan Application Table
+DROP TABLE IF EXISTS `loanapplication`;
+CREATE TABLE `loanapplication` (
+  `id` INTEGER PRIMARY KEY AUTOINCREMENT,
+  `name` VARCHAR(255) NOT NULL,
+  `mobile` VARCHAR(15) NOT NULL,
+  `email` VARCHAR(255) NOT NULL,
+  `credit_score` INTEGER NOT NULL,
+  `loan_amount` DECIMAL(15,2) NOT NULL,
+  `occupation` VARCHAR(255) NOT NULL,
+  `monthly_income` DECIMAL(15,2) NOT NULL,
+  `address` TEXT NOT NULL,
+  `date_of_birth` DATE NOT NULL,
+  `previous_credit` TINYINT(1) NOT NULL,
+  `previous_credit_details` TEXT DEFAULT NULL,
+  `education` VARCHAR(30) NOT NULL,
+  `applicationdate` VARCHAR(40) NOT NULL,
+  `action` TINYINT(1) DEFAULT 0
+);
+
+COMMIT;

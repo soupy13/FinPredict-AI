@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loan Prediction System</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="bg-gray-50 min-h-screen font-sans">
+    <!-- Navbar -->
+    <nav class="bg-blue-600 shadow-md text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+            <h1 class="text-2xl font-bold flex items-center gap-2">
+                <i data-lucide="landmark"></i> FinPredict AI
+            </h1>
+            <div class="space-x-4">
+                <button onclick="switchTab('predict')" class="hover:text-blue-200 font-semibold">Predict Loan</button>
+                <button onclick="switchTab('contact')" class="hover:text-blue-200 font-semibold">Contact Support</button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-4xl mx-auto py-10 px-4">
+        
+        <!-- PREDICTION SECTION -->
+        <section id="predict-section" class="bg-white rounded-xl shadow-lg border p-8">
+            <h2 class="text-2xl font-bold mb-6 text-gray-800 border-b pb-2">Check Loan Eligibility</h2>
+            <form id="predictionForm" class="space-y-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Gender</label>
+                        <select name="Gender" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm border p-2 bg-white">
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Married</label>
+                        <select name="Married" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm border p-2 bg-white">
+                            <option value="Yes">Yes</option>
+                            <option value="No">No</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Dependents</label>
+                        <select name="Dependents" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm border p-2 bg-white">
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3+">3+</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Education</label>
+                        <select name="Education" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm border p-2 bg-white">
+                            <option value="Graduate">Graduate</option>
+                            <option value="Not Graduate">Not Graduate</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Self Employed</label>
+                        <select name="Self_Employed" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm border p-2 bg-white">
+                            <option value="Yes">Yes</option>
+                            <option value="No">No</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Property Area</label>
+                        <select name="Property_Area" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm border p-2 bg-white">
+                            <option value="Urban">Urban</option>
+                            <option value="Semiurban">Semiurban</option>
+                            <option value="Rural">Rural</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Applicant Income</label>
+                        <input type="number" name="ApplicantIncome" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm border p-2">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Coapplicant Income</label>
+                        <input type="number" name="CoapplicantIncome" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm border p-2">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Loan Amount</label>
+                        <input type="number" name="LoanAmount" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm border p-2">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Loan Term (Months)</label>
+                        <input type="number" name="Loan_Amount_Term" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm border p-2">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Credit History (0 or 1)</label>
+                        <select name="Credit_History" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm border p-2 bg-white">
+                            <option value="1">1 (Good)</option>
+                            <option value="0">0 (Bad)</option>
+                        </select>
+                    </div>
+                </div>
+                <button type="submit" class="w-full bg-blue-600 text-white p-3 rounded-md hover:bg-blue-700 font-bold">Predict</button>
+            </form>
+
+            <div id="resultBox" class="hidden mt-6 p-4 rounded-md text-center font-bold text-xl"></div>
+        </section>
+
+        <!-- CONTACT SUPPORT SECTION -->
+        <section id="contact-section" class="hidden bg-white rounded-xl shadow-lg border p-8">
+            <h2 class="text-2xl font-bold mb-6 text-gray-800 border-b pb-2">Contact Support</h2>
+            <form id="contactForm" class="space-y-4">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700">Name</label>
+                    <input type="text" name="name" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm border p-2">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700">Email</label>
+                    <input type="email" name="email" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm border p-2">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700">Contact Number</label>
+                    <input type="text" name="contact" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm border p-2">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700">Message</label>
+                    <textarea name="message" rows="4" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm border p-2"></textarea>
+                </div>
+                <button type="submit" class="bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700 font-bold">Submit Query</button>
+            </form>
+        </section>
+
+    </main>
+
+    <script>
+        lucide.createIcons();
+
+        function switchTab(tab) {
+            document.getElementById('predict-section').classList.add('hidden');
+            document.getElementById('contact-section').classList.add('hidden');
+            document.getElementById(tab + '-section').classList.remove('hidden');
+        }
+
+        // Handle Prediction Submit
+        document.getElementById('predictionForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const formData = new FormData(e.target);
+            const data = Object.fromEntries(formData.entries());
+            
+            const resultBox = document.getElementById('resultBox');
+            resultBox.classList.remove('hidden', 'bg-green-100', 'text-green-800', 'bg-red-100', 'text-red-800');
+            resultBox.innerText = 'Predicting...';
+
+            try {
+                const res = await fetch('/predict', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+                const result = await res.json();
+
+                if (result.success) {
+                    if (result.isApproved) {
+                        resultBox.classList.add('bg-green-100', 'text-green-800');
+                        resultBox.innerText = '🎉 Loan Approved!';
+                    } else {
+                        resultBox.classList.add('bg-red-100', 'text-red-800');
+                        resultBox.innerText = '❌ Loan Rejected';
+                    }
+                } else {
+                    alert('Error: ' + result.error);
+                }
+            } catch (err) {
+                alert('Connection error. Ensure backend is running.');
+            }
+        });
+
+        // Handle Contact Form Submit
+        document.getElementById('contactForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const formData = new FormData(e.target);
+            const data = Object.fromEntries(formData.entries());
+
+            try {
+                const res = await fetch('/api/contact', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+                const result = await res.json();
+                if(result.success) {
+                    alert(result.message);
+                    e.target.reset();
+                }
+            } catch (err) {
+                alert('Connection error.');
+            }
+        });
+    </script>
+</body>
+</html>
