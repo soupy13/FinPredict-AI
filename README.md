@@ -19,7 +19,7 @@ A full-stack web application that predicts the approval status of a bank loan ba
 * **Deployment:** Docker, Gunicorn
 
 <img width="1280" height="692" alt="image" src="https://github.com/user-attachments/assets/26fe879e-23d3-4252-b542-45798d42def5" />
-![Uploading image.png…]()
+<img width="1280" height="682" alt="image" src="https://github.com/user-attachments/assets/991af3fa-1af8-43c6-bbe0-306fc9bb8289" />
 
 ## 📂 Project Structure
 
