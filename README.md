@@ -18,6 +18,9 @@ A full-stack web application that predicts the approval status of a bank loan ba
 * **Database:** SQLite3
 * **Deployment:** Docker, Gunicorn
 
+<img width="1280" height="692" alt="image" src="https://github.com/user-attachments/assets/26fe879e-23d3-4252-b542-45798d42def5" />
+![Uploading image.png…]()
+
 ## 📂 Project Structure
 
 ```text
