@@ -47,12 +47,6 @@ Python 3.9+ installed on your machine.
 
 Installation Steps
 
-Clone the repository:
-
-git clone [https://github.com/yourusername/loan-prediction-system.git](https://github.com/yourusername/loan-prediction-system.git)
-cd loan-prediction-system
-
-
 Create a Virtual Environment:
 
 python -m venv venv
